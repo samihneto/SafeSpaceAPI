@@ -22,6 +22,7 @@ namespace SafeSpaceAPI.Infrastructure.Context
 
             base.OnModelCreating(modelBuilder);
         }
+        public DbSet<SafeSpaceAPI.Domain.Entities.ConteudoAutoAjuda> ConteudoAutoAjuda { get; set; } = default!;
 
     }
 }
