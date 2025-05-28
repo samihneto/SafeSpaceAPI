@@ -12,10 +12,6 @@ namespace SafeSpaceAPI.Infrastructure.Mappings
 
             builder.HasKey(s => s.Id);
 
-            builder.Property(s => s.Id)
-                .HasColumnName("ID")
-                .IsRequired();
-
             builder.Property(s => s.Descricao)
                 .HasColumnName("DESCRICAO")
                 .IsRequired()
@@ -23,10 +19,6 @@ namespace SafeSpaceAPI.Infrastructure.Mappings
 
             builder.Property(s => s.DataSolicitacao)
                 .HasColumnName("DATA_SOLICITACAO")
-                .IsRequired();
-
-            builder.Property(s => s.IdUsuarioSS)
-                .HasColumnName("ID_USUARIO_SS")
                 .IsRequired();
         }
     }

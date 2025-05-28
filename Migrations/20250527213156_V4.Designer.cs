@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using SafeSpaceAPI.Infrastructure.Context;
@@ -11,9 +12,11 @@ using SafeSpaceAPI.Infrastructure.Context;
 namespace SafeSpaceAPI.Migrations
 {
     [DbContext(typeof(SafeSpaceContext))]
-    partial class SafeSpaceContextModelSnapshot : ModelSnapshot
+    [Migration("20250527213156_V4")]
+    partial class V4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,64 +25,33 @@ namespace SafeSpaceAPI.Migrations
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("SafeSpaceAPI.Domain.Entities.Agendamento", b =>
+            modelBuilder.Entity("SafeSpaceAPI.Domain.Entities.ConteudoAutoAjuda", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("RAW(16)");
 
-                    b.Property<DateTime>("DataAgendamento")
-                        .HasColumnType("TIMESTAMP(7)")
-                        .HasColumnName("DATA_AGENDAMENTO");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("NVARCHAR2(500)")
-                        .HasColumnName("DESCRICAO");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Agendamento", (string)null);
-                });
-
-            modelBuilder.Entity("SafeSpaceAPI.Domain.Entities.ConteudoAutoAjuda", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("RAW(16)")
-                        .HasColumnName("ID");
-
                     b.Property<DateTime>("DataPublicacao")
-                        .HasColumnType("TIMESTAMP(7)")
-                        .HasColumnName("DATA_PUBLICACAO");
+                        .HasColumnType("TIMESTAMP(7)");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("NVARCHAR2(1000)")
-                        .HasColumnName("DESCRICAO");
+                        .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<string>("TipoConteudo")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)")
-                        .HasColumnName("TIPO_CONTEUDO");
+                    b.Property<int>("TipoConteudo")
+                        .HasColumnType("NUMBER(10)");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("NVARCHAR2(200)")
-                        .HasColumnName("TITULO");
+                        .HasColumnType("NVARCHAR2(2000)");
 
                     b.Property<string>("URL")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("NVARCHAR2(500)")
-                        .HasColumnName("URL");
+                        .HasColumnType("NVARCHAR2(2000)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ConteudoAutoAjuda", (string)null);
+                    b.ToTable("ConteudoAutoAjuda");
                 });
 
             modelBuilder.Entity("SafeSpaceAPI.Domain.Entities.SolicitacaoAjuda", b =>

@@ -2,17 +2,14 @@
 {
     public class SolicitacaoAjuda
     {
-        public Guid Id { get; private set; }
+        public Guid Id { get; set; }
         public string Descricao { get; private set; }
         public DateTime DataSolicitacao { get; private set; }
-        public Guid IdUsuarioSS { get; set; }
 
-        public SolicitacaoAjuda(Guid id, string descricao, DateTime dataSolicitacao, Guid idUsuarioSS)
+        public SolicitacaoAjuda(string descricao, DateTime dataSolicitacao)
         {
-            Id = id;
             Descricao = descricao;
             DataSolicitacao = dataSolicitacao;
-            IdUsuarioSS = idUsuarioSS;
         }
     }
 }
