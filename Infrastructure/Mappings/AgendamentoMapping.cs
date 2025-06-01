@@ -8,7 +8,7 @@ namespace SafeSpaceAPI.Infrastructure.Mappings
     {
         public void Configure(EntityTypeBuilder<Agendamento> builder)
         {
-            builder.ToTable("Agendamento");
+            builder.ToTable("AGENDAMENTO");
 
             builder.HasKey(a => a.Id);
 
