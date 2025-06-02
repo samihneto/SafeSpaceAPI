@@ -38,7 +38,7 @@ public class Program
 
         var app = builder.Build();
 
-        //// Aplicar migrations automaticamente
+        // Aplicar migrations automaticamente
         //using (var scope = app.Services.CreateScope())
         //{
         //    var context = scope.ServiceProvider.GetRequiredService<SafeSpaceContext>();
