@@ -14,8 +14,8 @@ public class Program
         builder.Services.AddControllers()
             .AddJsonOptions(options =>
             {
-                // Serializa enums como string no JSON
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
             });
 
         builder.Services.AddEndpointsApiExplorer();
@@ -39,13 +39,12 @@ public class Program
         var app = builder.Build();
 
         // Aplicar migrations automaticamente
-        //using (var scope = app.Services.CreateScope())
-        //{
-        //    var context = scope.ServiceProvider.GetRequiredService<SafeSpaceContext>();
-        //    context.Database.Migrate();
-        //}
+        using (var scope = app.Services.CreateScope())
+        {
+            var context = scope.ServiceProvider.GetRequiredService<SafeSpaceContext>();
+            context.Database.Migrate();
+        }
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();

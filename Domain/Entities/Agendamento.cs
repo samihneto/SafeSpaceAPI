@@ -11,15 +11,14 @@ namespace SafeSpaceAPI.Domain.Entities
 
         public DateTime DataAgendamento { get; private set; }
 
-        public string Descricao { get; private set; }
+        public string Descricao { get; set; }
 
-        // FK para UsuarioSS
         public Guid UsuarioSSId { get; set; }
 
-        // Propriedade de navegação para o usuário
-        public UsuarioSS UsuarioSS { get; set; }
+        public UsuarioSS? UsuarioSS { get; set; }
 
-        // Construtor
+        public Agendamento() { } // Necessário para o binding do ASP.NET
+
         public Agendamento(DateTime dataAgendamento, string descricao, Guid usuarioSSId)
         {
             DataAgendamento = dataAgendamento;

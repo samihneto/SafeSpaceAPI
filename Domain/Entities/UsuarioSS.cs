@@ -1,5 +1,6 @@
 ﻿using SafeSpaceAPI.Domain.Enums;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace SafeSpaceAPI.Domain.Entities
 {
@@ -15,8 +16,11 @@ namespace SafeSpaceAPI.Domain.Entities
 
         public DateTime DataCadastro { get; private set; }
 
-        // Coleção de agendamentos do usuário
         public ICollection<Agendamento> Agendamentos { get; private set; } = new List<Agendamento>();
+
+
+        // Construtor usado pelo EF
+        protected UsuarioSS() { }
 
         public UsuarioSS(string nome, string email, string telefone, string senha, TipoUsuario tipoUsuario, DateTime dataCadastro)
         {
@@ -28,4 +32,5 @@ namespace SafeSpaceAPI.Domain.Entities
             DataCadastro = dataCadastro;
         }
     }
+
 }

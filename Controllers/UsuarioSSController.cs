@@ -25,14 +25,18 @@ namespace SafeSpaceAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UsuarioSS>>> GetUsuarios()
         {
-            return await _context.Usuarios.ToListAsync();
+            return await _context.Usuarios
+                                 .Include(u => u.Agendamentos)
+                                 .ToListAsync();
         }
 
         // GET: /UsuarioSS/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UsuarioSS>> GetUsuarioSS(Guid id)
         {
-            var usuarioSS = await _context.Usuarios.FindAsync(id);
+            var usuarioSS = await _context.Usuarios
+                                          .Include(u => u.Agendamentos)  // <-- inclui os agendamentos
+                                          .FirstOrDefaultAsync(u => u.Id == id);
 
             if (usuarioSS == null)
             {
