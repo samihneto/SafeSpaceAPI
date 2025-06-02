@@ -12,8 +12,8 @@ using SafeSpaceAPI.Infrastructure.Context;
 namespace SafeSpaceAPI.Migrations
 {
     [DbContext(typeof(SafeSpaceContext))]
-    [Migration("20250602000725_v6")]
-    partial class v6
+    [Migration("20250602134742_NovosControllers")]
+    partial class NovosControllers
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,48 +41,14 @@ namespace SafeSpaceAPI.Migrations
                         .HasColumnType("NVARCHAR2(500)")
                         .HasColumnName("DESCRICAO");
 
+                    b.Property<Guid>("UsuarioSSId")
+                        .HasColumnType("RAW(16)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UsuarioSSId");
 
                     b.ToTable("Agendamento", (string)null);
-                });
-
-            modelBuilder.Entity("SafeSpaceAPI.Domain.Entities.ConteudoAutoAjuda", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("RAW(16)")
-                        .HasColumnName("ID");
-
-                    b.Property<DateTime>("DataPublicacao")
-                        .HasColumnType("TIMESTAMP(7)")
-                        .HasColumnName("DATA_PUBLICACAO");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("NVARCHAR2(1000)")
-                        .HasColumnName("DESCRICAO");
-
-                    b.Property<string>("TipoConteudo")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)")
-                        .HasColumnName("TIPO_CONTEUDO");
-
-                    b.Property<string>("Titulo")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("NVARCHAR2(200)")
-                        .HasColumnName("TITULO");
-
-                    b.Property<string>("URL")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("NVARCHAR2(500)")
-                        .HasColumnName("URL");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ConteudoAutoAjuda", (string)null);
                 });
 
             modelBuilder.Entity("SafeSpaceAPI.Domain.Entities.SolicitacaoAjuda", b =>
@@ -147,6 +113,22 @@ namespace SafeSpaceAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UsuarioSS", (string)null);
+                });
+
+            modelBuilder.Entity("SafeSpaceAPI.Domain.Entities.Agendamento", b =>
+                {
+                    b.HasOne("SafeSpaceAPI.Domain.Entities.UsuarioSS", "UsuarioSS")
+                        .WithMany("Agendamentos")
+                        .HasForeignKey("UsuarioSSId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UsuarioSS");
+                });
+
+            modelBuilder.Entity("SafeSpaceAPI.Domain.Entities.UsuarioSS", b =>
+                {
+                    b.Navigation("Agendamentos");
                 });
 #pragma warning restore 612, 618
         }

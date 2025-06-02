@@ -12,8 +12,8 @@ using SafeSpaceAPI.Infrastructure.Context;
 namespace SafeSpaceAPI.Migrations
 {
     [DbContext(typeof(SafeSpaceContext))]
-    [Migration("20250601231455_v5")]
-    partial class v5
+    [Migration("20250602124448_Agendamento")]
+    partial class Agendamento
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

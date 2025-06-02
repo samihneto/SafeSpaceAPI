@@ -5,7 +5,7 @@
 namespace SafeSpaceAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class v6 : Migration
+    public partial class NovosControllers : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

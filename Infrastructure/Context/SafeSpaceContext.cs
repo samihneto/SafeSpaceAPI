@@ -15,17 +15,16 @@ namespace SafeSpaceAPI.Infrastructure.Context
 
         public DbSet<SafeSpaceAPI.Domain.Entities.SolicitacaoAjuda> SolicitacaoAjuda { get; set; } = default!;
 
+        public DbSet<SafeSpaceAPI.Domain.Entities.Agendamento> Agendamento { get; set; } = default!;  // <- Aqui
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UsuarioMapping());
             modelBuilder.ApplyConfiguration(new SolicitacaoAjudaMapping());
-            modelBuilder.ApplyConfiguration(new ConteudoMapping());
             modelBuilder.ApplyConfiguration(new AgendamentoMapping());
 
             base.OnModelCreating(modelBuilder);
         }
-        public DbSet<SafeSpaceAPI.Domain.Entities.ConteudoAutoAjuda> ConteudoAutoAjuda { get; set; } = default!;
-        public DbSet<SafeSpaceAPI.Domain.Entities.Agendamento> Agendamento { get; set; } = default!;
-
     }
+
 }

@@ -20,6 +20,14 @@ namespace SafeSpaceAPI.Infrastructure.Mappings
                 .IsRequired()
                 .HasColumnName("DESCRICAO")
                 .HasMaxLength(500);
+
+            // Configura FK e relacionamento 1:N
+            builder.HasOne(a => a.UsuarioSS)
+                   .WithMany(u => u.Agendamentos)
+                   .HasForeignKey(a => a.UsuarioSSId)
+                   .IsRequired()
+                   .OnDelete(DeleteBehavior.Cascade); // opcional, depende da sua regra
         }
+
     }
 }

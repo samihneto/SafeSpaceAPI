@@ -21,14 +21,14 @@ namespace SafeSpaceAPI.Controllers
             _context = context;
         }
 
-        // GET: api/UsuarioSS
+        // GET: /UsuarioSS
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UsuarioSS>>> GetUsuarios()
         {
             return await _context.Usuarios.ToListAsync();
         }
 
-        // GET: api/UsuarioSS/5
+        // GET: /UsuarioSS/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UsuarioSS>> GetUsuarioSS(Guid id)
         {
@@ -42,7 +42,7 @@ namespace SafeSpaceAPI.Controllers
             return usuarioSS;
         }
 
-        // PUT: api/UsuarioSS/5
+        // PUT: /UsuarioSS/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUsuarioSS(Guid id, UsuarioSS usuarioSS)
@@ -73,7 +73,7 @@ namespace SafeSpaceAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/UsuarioSS
+        // POST: /UsuarioSS
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<UsuarioSS>> PostUsuarioSS(UsuarioSS usuarioSS)
@@ -84,7 +84,7 @@ namespace SafeSpaceAPI.Controllers
             return CreatedAtAction("GetUsuarioSS", new { id = usuarioSS.Id }, usuarioSS);
         }
 
-        // DELETE: api/UsuarioSS/5
+        // DELETE: /UsuarioSS/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUsuarioSS(Guid id)
         {

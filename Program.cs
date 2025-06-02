@@ -38,12 +38,12 @@ public class Program
 
         var app = builder.Build();
 
-        // Aplicar migrations automaticamente
-        using (var scope = app.Services.CreateScope())
-        {
-            var context = scope.ServiceProvider.GetRequiredService<SafeSpaceContext>();
-            context.Database.Migrate();
-        }
+        //// Aplicar migrations automaticamente
+        //using (var scope = app.Services.CreateScope())
+        //{
+        //    var context = scope.ServiceProvider.GetRequiredService<SafeSpaceContext>();
+        //    context.Database.Migrate();
+        //}
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())

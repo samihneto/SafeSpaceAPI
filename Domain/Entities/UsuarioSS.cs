@@ -1,4 +1,5 @@
 ﻿using SafeSpaceAPI.Domain.Enums;
+using System.Collections.Generic;
 
 namespace SafeSpaceAPI.Domain.Entities
 {
@@ -13,6 +14,9 @@ namespace SafeSpaceAPI.Domain.Entities
         public TipoUsuario TipoUsuario { get; private set; }
 
         public DateTime DataCadastro { get; private set; }
+
+        // Coleção de agendamentos do usuário
+        public ICollection<Agendamento> Agendamentos { get; private set; } = new List<Agendamento>();
 
         public UsuarioSS(string nome, string email, string telefone, string senha, TipoUsuario tipoUsuario, DateTime dataCadastro)
         {

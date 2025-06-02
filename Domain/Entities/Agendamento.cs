@@ -13,11 +13,18 @@ namespace SafeSpaceAPI.Domain.Entities
 
         public string Descricao { get; private set; }
 
+        // FK para UsuarioSS
+        public Guid UsuarioSSId { get; set; }
+
+        // Propriedade de navegação para o usuário
+        public UsuarioSS UsuarioSS { get; set; }
+
         // Construtor
-        public Agendamento(DateTime dataAgendamento, string descricao)
+        public Agendamento(DateTime dataAgendamento, string descricao, Guid usuarioSSId)
         {
             DataAgendamento = dataAgendamento;
             Descricao = descricao;
+            UsuarioSSId = usuarioSSId;
         }
     }
 }

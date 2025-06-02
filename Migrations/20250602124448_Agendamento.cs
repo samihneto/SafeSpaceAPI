@@ -11,31 +11,6 @@ namespace SafeSpaceAPI.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Titulo",
-                table: "ConteudoAutoAjuda",
-                newName: "TITULO");
-
-            migrationBuilder.RenameColumn(
-                name: "Descricao",
-                table: "ConteudoAutoAjuda",
-                newName: "DESCRICAO");
-
-            migrationBuilder.RenameColumn(
-                name: "Id",
-                table: "ConteudoAutoAjuda",
-                newName: "ID");
-
-            migrationBuilder.RenameColumn(
-                name: "TipoConteudo",
-                table: "ConteudoAutoAjuda",
-                newName: "TIPO_CONTEUDO");
-
-            migrationBuilder.RenameColumn(
-                name: "DataPublicacao",
-                table: "ConteudoAutoAjuda",
-                newName: "DATA_PUBLICACAO");
-
             migrationBuilder.AlterColumn<string>(
                 name: "URL",
                 table: "ConteudoAutoAjuda",

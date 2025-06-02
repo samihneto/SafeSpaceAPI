@@ -21,14 +21,14 @@ namespace SafeSpaceAPI.Controllers
             _context = context;
         }
 
-        // GET: api/Agendamento
+        // GET: /Agendamento
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Agendamento>>> GetAgendamento()
         {
             return await _context.Agendamento.ToListAsync();
         }
 
-        // GET: api/Agendamento/5
+        // GET: /Agendamento/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Agendamento>> GetAgendamento(Guid id)
         {
@@ -42,7 +42,7 @@ namespace SafeSpaceAPI.Controllers
             return agendamento;
         }
 
-        // PUT: api/Agendamento/5
+        // PUT: /Agendamento/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAgendamento(Guid id, Agendamento agendamento)
@@ -73,7 +73,7 @@ namespace SafeSpaceAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Agendamento
+        // POST: /Agendamento
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Agendamento>> PostAgendamento(Agendamento agendamento)
@@ -84,7 +84,7 @@ namespace SafeSpaceAPI.Controllers
             return CreatedAtAction("GetAgendamento", new { id = agendamento.Id }, agendamento);
         }
 
-        // DELETE: api/Agendamento/5
+        // DELETE: /Agendamento/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAgendamento(Guid id)
         {
