@@ -14,6 +14,12 @@
 
 ---
 
+## Imagens e Diagramas
+
+Siga o caminho de pastas dentro do projeto ./Diagramas/
+
+---
+
 ## 📌 Funcionalidades
 
 - Cadastro de usuários (vítimas, voluntários, profissionais)
